@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script src="js/vue.js" type="text/javascript"></script>
+	
+</head>
+<body>
+	<fieldset id="app">
+		<legend>列表显示 指令v-on绑定事件</legend>
+		
+		
+		<div>
+			<span>当前点击次数为：{{count}}</span>
+			<!-- 
+				if文档中最初没有，满足条件才有 
+				show相当于 display：none
+			-->
+			<div v-if="tag">
+				恭喜您中奖了[v-if] 	
+			</div>
+			<div v-show="tag">
+				恭喜您中奖了[v-show] 	
+			</div>
+		</div>
+		<!-- <button v-on:click="addCus">点击次数增加</button> -->
+		<button @click="addCus">点击次数增加</button>
+	</fieldset>		
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				count:0,
+				tag:false,
+			},
+			methods:{
+				addCus:function(event){
+					// this指向vm
+					this.count++;
+					if(this.count == 10){
+						this.count=0;
+						this.tag = true;
+					}
+					console.dir(event);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

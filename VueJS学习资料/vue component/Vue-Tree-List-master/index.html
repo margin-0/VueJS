@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="element">
+	<vue-tree-list 
+			@change="onChange($event)"
+			v-model="testModel"
+			:list-model="listModel">
+	</vue-tree-list>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.4/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/g/lodash@4.17.4(lodash.min.js+lodash.core.min.js)"></script>
+<script src="vue-tree-list.js"></script>
+<script>
+	var listModel = {
+		"label": "Level 1",
+		"level": "level1",
+		"items": [
+			{
+				"id": 1,
+				"label": "menu 1",
+				"level": "level2",
+				"selected": true,
+				"items": [
+					{
+						"id": 1,
+						"label": "menu 1",
+						"level": "level3",
+						"items": [
+							{
+								"id": 1,
+								"label": "Sub 1"
+							},
+							{
+								"id": 2,
+								"label": "Sub 2"
+							},
+							{
+								"id": 3,
+								"label": "Sub 3"
+							}
+						]
+					},
+					{
+						"id": 2,
+						"label": "menu 2"
+					},
+					{
+						"id": 3,
+						"label": "menu 3"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"label":"menu 2",
+				"level": "level2",
+				"items": [
+					{
+						"id": 4,
+						"label": "menu 1"
+					}
+				]
+			},
+			{
+				"id": 3,
+				"label": "menu 3",
+				"level": "level2",
+				"items": [
+					{
+						"id": 5,
+						"label": "menu 1"
+					},
+					{
+						"id": 6,
+						"label": "menu 3"
+					}
+				]
+			},
+			{
+				"id": 4,
+				"label": "menu 4",
+				"level": "level2"
+			}
+		]
+	};
+	var module = new Vue({
+		el: '#element',
+		data: {
+			listModel: listModel,
+			testModel: null
+		},
+		methods: {
+			onChange: function(event) {
+				console.log(JSON.stringify(event));
+			}
+		},
+		watch: {
+			testModel: function() {
+				console.log(JSON.stringify(this.testModel));
+			}
+		}
+	})
+</script>
+</body>
+</html>
