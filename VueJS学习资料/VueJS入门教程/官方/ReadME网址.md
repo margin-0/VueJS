@@ -14,3 +14,4 @@
 	https://github.com/devjin0617/vue2-admin-lte
 	https://github.com/superman66/vue2.x-douban
 	https://github.com/bailicangdu
+	https://github.com/ustbhuangyi/vue-sell
